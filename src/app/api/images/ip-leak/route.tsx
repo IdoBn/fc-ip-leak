@@ -3,6 +3,7 @@ import satori from "satori";
 import sharp from "sharp";
 import { join } from "path";
 import * as fs from "fs";
+import { NextApiRequest } from "next";
 
 const interRegPath = join(process.cwd(), "public/Inter-Regular.ttf");
 let interReg = fs.readFileSync(interRegPath);
@@ -10,9 +11,11 @@ let interReg = fs.readFileSync(interRegPath);
 const interBoldPath = join(process.cwd(), "public/Inter-Bold.ttf");
 let interBold = fs.readFileSync(interBoldPath);
 
-export async function GET(event: any) {
-  const { query, headers } = event; // Extract query parameters and headers
+export async function GET(req: NextApiRequest) {
+  console.log(req);
+  const { query, headers } = req; // Extract query parameters and headers
   console.log("query", query);
+  console.log("headers", headers);
   // const name = query.name;
 
   // Get the original IP address from the X-Forwarded-For header

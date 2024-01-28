@@ -26,6 +26,7 @@ export async function GET(req: NextRequest) {
 
   // Get the original IP address from the X-Forwarded-For header
   const originalIpAddress = req.headers.get("x-forwarded-for");
+  const name = req.nextUrl.searchParams.get("name");
   console.log("originalIpAddress", originalIpAddress);
 
   const svg = await satori(
@@ -44,8 +45,11 @@ export async function GET(req: NextRequest) {
         color: "black",
       }}
     >
-      <h1>Show your Name & IP!</h1>
-      <div style={{ display: "flex" }}> name: and IP: {originalIpAddress} </div>
+      <h1>Got you!</h1>
+      <div style={{ display: "flex" }}>
+        {" "}
+        name: {name} and IP: {originalIpAddress}{" "}
+      </div>
     </div>,
     {
       width: 600,

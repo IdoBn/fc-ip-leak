@@ -12,7 +12,8 @@ let interBold = fs.readFileSync(interBoldPath);
 
 export async function GET(event: any) {
   const { query, headers } = event; // Extract query parameters and headers
-  const name = query.name;
+  console.log("query", query);
+  // const name = query.name;
 
   // Get the original IP address from the X-Forwarded-For header
   const originalIpAddress = headers["x-forwarded-for"];
@@ -34,10 +35,7 @@ export async function GET(event: any) {
       }}
     >
       <h1>Show your Name & IP!</h1>
-      <div style={{ display: "flex" }}>
-        {" "}
-        name: {name} and IP: {originalIpAddress}{" "}
-      </div>
+      <div style={{ display: "flex" }}> name: and IP: {originalIpAddress} </div>
     </div>,
     {
       width: 600,

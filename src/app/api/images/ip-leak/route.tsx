@@ -11,8 +11,11 @@ const interBoldPath = join(process.cwd(), "public/Inter-Bold.ttf");
 let interBold = fs.readFileSync(interBoldPath);
 
 export async function GET(event: any) {
-  const { query } = event;
+  const { query, headers } = event; // Extract query parameters and headers
   const name = query.name;
+
+  // Get the original IP address from the X-Forwarded-For header
+  const originalIpAddress = headers["x-forwarded-for"];
 
   const svg = await satori(
     <div
@@ -30,8 +33,11 @@ export async function GET(event: any) {
         color: "black",
       }}
     >
-      <h1>Show your Name!</h1>
-      <div style={{ display: "flex" }}> {name} </div>
+      <h1>Show your Name & IP!</h1>
+      <div style={{ display: "flex" }}>
+        {" "}
+        name: {name} and IP: {originalIpAddress}{" "}
+      </div>
     </div>,
     {
       width: 600,

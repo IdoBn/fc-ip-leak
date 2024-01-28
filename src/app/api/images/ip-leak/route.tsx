@@ -13,6 +13,7 @@ let interBold = fs.readFileSync(interBoldPath);
 
 export async function GET(req: NextApiRequest) {
   console.log("request", req);
+  console.log("request", JSON.stringify(req));
   const { query, headers } = req; // Extract query parameters and headers
   console.log("query", query);
   console.log("headers", headers);

@@ -12,7 +12,7 @@ const interBoldPath = join(process.cwd(), "public/Inter-Bold.ttf");
 let interBold = fs.readFileSync(interBoldPath);
 
 export async function GET(req: NextApiRequest) {
-  console.log(req);
+  console.log("request", req);
   const { query, headers } = req; // Extract query parameters and headers
   console.log("query", query);
   console.log("headers", headers);

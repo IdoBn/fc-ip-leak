@@ -27,15 +27,8 @@ export async function GET() {
         color: "black",
       }}
     >
-      <h1>Yoink!</h1>
-      <div style={{ display: "flex" }}>
-        Click to yoink the flag{" "}
-        <img
-          width="32"
-          height="32"
-          src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.0.3/72x72/1f6a9.png"
-        />
-      </div>
+      <h1>What is your IP</h1>
+      <div style={{ display: "flex" }}>Click to get your IP address </div>
     </div>,
     {
       width: 600,
@@ -54,7 +47,7 @@ export async function GET() {
           style: "normal",
         },
       ],
-    },
+    }
   );
 
   const img = await sharp(Buffer.from(svg))

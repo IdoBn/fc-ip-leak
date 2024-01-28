@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
           break;
         }
       }
-      const flag = await kv.get("flag") as string;
+      const flag = (await kv.get("flag")) as string;
       if (name.toString() !== flag.toString()) {
         await kv.set("flag", name);
         await kv.incr("yoinks");
@@ -48,14 +48,14 @@ export async function POST(req: NextRequest) {
           <meta name="fc:frame" content="vNext" />
           <meta name="fc:frame:image" content="${imageUrl}" />
         </head>
-        <body>Yoink</body>
+        <body>Hello World</body>
       </html>`,
         {
           status: 200,
           headers: {
             "Content-Type": "text/html",
           },
-        },
+        }
       );
     } else {
       return new NextResponse("Internal server error", { status: 500 });

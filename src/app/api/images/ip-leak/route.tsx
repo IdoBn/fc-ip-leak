@@ -48,9 +48,7 @@ export async function GET(req: NextRequest) {
       <h1>Got you!</h1>
       <div style={{ display: "flex" }}>
         {" "}
-        name: {name}
-        <br></br>
-        IP: {originalIpAddress}{" "}
+        name: {name} IP: {originalIpAddress}{" "}
       </div>
     </div>,
     {

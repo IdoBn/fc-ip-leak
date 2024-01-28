@@ -36,17 +36,7 @@ export default function Home() {
           >
             here
           </a>{" "}
-          to yoink on Warpcast.
-        </p>
-        <p>
-          See the code on{" "}
-          <a
-            className="text-red-500 underline"
-            href="https://github.com/horsefacts/yoink"
-            target="_blank"
-          >
-            GitHub
-          </a>
+          to see your ip address
         </p>
       </div>
     </main>

@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      const imageUrl = `${process.env["HOST"]}/api/images/yoink?date=${Date.now()}`;
+      const imageUrl = `${process.env["HOST"]}/api/images/ip-leak?name=${name}`;
       return new NextResponse(
         `<!DOCTYPE html>
       <html>

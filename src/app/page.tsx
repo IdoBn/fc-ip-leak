@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 // import Yoink from "@/app/components/Yoink";
 
-const postUrl = `${process.env["HOST"]}/api/start`;
+const postUrl = `${process.env["HOST"]}/api/start2`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const imageUrl = `${process.env["HOST"]}/api/images/start?date=${Date.now()}`;
@@ -24,20 +24,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function Home() {
   return (
     <main className="flex flex-col text-center lg:p-16">
-      {/* <Yoink /> */}
       <h1>Hello world</h1>
       <div className="mt-4">
-        <p>
-          Click{" "}
-          <a
-            className="text-red-500 underline"
-            href="https://warpcast.com/horsefacts.eth/0x80dd1ea4"
-            target="_blank"
-          >
-            here
-          </a>{" "}
-          to see your ip address
-        </p>
+        <p>Click here to see your ip address</p>
       </div>
     </main>
   );

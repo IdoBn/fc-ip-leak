@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
-import { kv } from "@vercel/kv";
 import satori from "satori";
 import sharp from "sharp";
 import { join } from "path";
 import * as fs from "fs";
-
-export const dynamic = "force-dynamic";
 
 const interRegPath = join(process.cwd(), "public/Inter-Regular.ttf");
 let interReg = fs.readFileSync(interRegPath);
@@ -13,9 +10,10 @@ let interReg = fs.readFileSync(interRegPath);
 const interBoldPath = join(process.cwd(), "public/Inter-Bold.ttf");
 let interBold = fs.readFileSync(interBoldPath);
 
-export async function GET() {
-  const flag = (await kv.get("flag")) as string;
-  const yoinks = (await kv.get("yoinks")) as string;
+export async function GET(event: any) {
+  const { query } = event;
+  const name = query.name;
+
   const svg = await satori(
     <div
       style={{
@@ -30,21 +28,10 @@ export async function GET() {
         lineHeight: 1.2,
         fontSize: 24,
         color: "black",
-        marginBottom: 12,
       }}
     >
-      <h1>{flag}</h1>
-      <div style={{ display: "flex" }}>
-        Has the flag{" "}
-        <img
-          width="32"
-          height="32"
-          src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/15.0.3/72x72/1f6a9.png"
-        />
-      </div>
-      <div style={{ display: "flex", marginTop: "12" }}>
-        The flag has been yoinked {yoinks} times.
-      </div>
+      <h1>Show your Name!</h1>
+      <div style={{ display: "flex" }}> {name} </div>
     </div>,
     {
       width: 600,

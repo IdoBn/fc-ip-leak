@@ -1,9 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import satori from "satori";
 import sharp from "sharp";
 import { join } from "path";
 import * as fs from "fs";
-import { NextApiRequest } from "next";
 
 const interRegPath = join(process.cwd(), "public/Inter-Regular.ttf");
 let interReg = fs.readFileSync(interRegPath);
@@ -11,16 +10,23 @@ let interReg = fs.readFileSync(interRegPath);
 const interBoldPath = join(process.cwd(), "public/Inter-Bold.ttf");
 let interBold = fs.readFileSync(interBoldPath);
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
   console.log("request", req);
   console.log("request", JSON.stringify(req));
-  const { query, headers } = req; // Extract query parameters and headers
-  console.log("query", query);
-  console.log("headers", headers);
+  console.log("cookies", req.cookies);
+  console.log("ip", req.ip);
+  console.log("url", req.url);
+  console.log("nextUrl", req.nextUrl);
+  console.log("headers", req.headers);
+  console.log("headers", req.headers);
+  // const { query, headers } = req; // Extract query parameters and headers
+  // console.log("query", query);
+  // console.log("headers", headers);
   // const name = query.name;
 
   // Get the original IP address from the X-Forwarded-For header
-  const originalIpAddress = headers["x-forwarded-for"];
+  const originalIpAddress = req.headers.get("x-forwarded-for");
+  console.log("originalIpAddress", originalIpAddress);
 
   const svg = await satori(
     <div
